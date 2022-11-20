@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     private static final List<String> NAMES = List.of(
@@ -12,18 +9,19 @@ public class Main {
 
     public static void main(String[] args) {
         //какие то задания по спискам и очередям
-        Queue<String> queue1 = new ArrayDeque<>();
-        Queue<String> queue2 = new ArrayDeque<>();
-        filling(queue1);
-        filling(queue2);
-        System.out.println("очередь 1" + queue1);
-        System.out.println("очередь 2" + queue2);
-        add("Дима",queue1,queue2);
-        System.out.println("очередь 1" + queue1);
-        System.out.println("очередь 2" + queue2);
-        delete( queue1,queue2);
-        System.out.println("очередь 1" + queue1);
-        System.out.println("очередь 2" + queue2);
+//        Queue<String> queue1 = new ArrayDeque<>();
+//        Queue<String> queue2 = new ArrayDeque<>();
+//        filling(queue1);
+//        filling(queue2);
+//        System.out.println("очередь 1" + queue1);
+//        System.out.println("очередь 2" + queue2);
+//        add("Дима",queue1,queue2);
+//        System.out.println("очередь 1" + queue1);
+//        System.out.println("очередь 2" + queue2);
+//        delete( queue1,queue2);
+//        System.out.println("очередь 1" + queue1);
+//        System.out.println("очередь 2" + queue2);
+        example();
     }
 
     public static void add(String name, Queue<String> queue1, Queue<String> queue2) {
@@ -37,6 +35,7 @@ public class Main {
             queue2.offer(name);
         }
     }
+
     public static void delete(Queue<String> queue1, Queue<String> queue2) {
         if (RANDOM.nextBoolean()) {
             queue1.poll();
@@ -49,6 +48,22 @@ public class Main {
         int size = RANDOM.nextInt(Max_SIZE);
         for (int i = 0; i < size; i++) {
             queue.offer(NAMES.get(RANDOM.nextInt(NAMES.size())));
+        }
+    }
+
+    private static void example() {
+        List<List> biDemArrList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            biDemArrList.add(i, new ArrayList<>());
+            for (int j = 0; j < 8; j++) {
+                biDemArrList.get(i).add(j, ((i + j) % 2 == 1 ? "●" : "◯"));
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(biDemArrList.get(i).get(j) + " ");
+            }
+            System.out.println();
         }
     }
 }
